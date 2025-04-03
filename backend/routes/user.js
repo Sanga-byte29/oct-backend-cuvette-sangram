@@ -6,14 +6,14 @@ env.config();
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, res, next) => {
     const { name, email, password, mobile } = req.body;
     try {
         const userExists = await User.findOne({ email });
         if (userExists) {
-            return res.status(400).json({
-                message: "User already exists",
-            });
+            const error = new Error("User already exists");
+            error.name = "ValidationError";
+            throw error;
         }
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({
@@ -27,26 +27,24 @@ router.post('/register', async (req, res) => {
         });
     }
     catch (err) {
-        res.status(500).json({
-            message: err.message,
-        });
+        next(err);
     }
 })
 
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({
-                message: "Invalid Credentials",
-            });
+            const error = new Error("User not found");
+            error.name = "NotFoundError";
+            throw error;
         }
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
-            return res.status(400).json({
-                message: "Invalid Credentials",
-            });
+            const error = new Error("Invalid password");
+            error.name = "UnauthorizedError";
+            throw error;
         }
         // jwt.io
         const token = jwt.sign({
@@ -60,9 +58,7 @@ router.post('/login', async (req, res) => {
         });
     }
     catch (err) {
-        res.status(500).json({
-            message: err.message,
-        });
+        next(err);
     }
 })
 
