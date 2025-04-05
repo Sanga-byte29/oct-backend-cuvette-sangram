@@ -1,0 +1,142 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.formSection {
+  flex: 1;
+  padding: 4rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.imageSection {
+  flex: 1;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #525252;
+  margin-bottom: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.formGroup {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+  gap: 30px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.input {
+  padding: 15px;
+  border: 1px solid #c2c2c2;
+  border-radius: 5px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.textarea {
+  padding: 15px;
+  border: 1px solid #c2c2c2;
+  border-radius: 5px;
+  font-size: 14px;
+  min-height: 100px;
+  resize: vertical;
+  background: #fff;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skillTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skillTag {
+  background: #ffeeee;
+  color: #ed5353;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.removeSkill {
+  background: none;
+  border: none;
+  color: #ed5353;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.button {
+  background: #ed5353;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  flex: 1;
+}
+
+.cancelButton {
+  background: white;
+  color: #ed5353;
+  border: 1px solid #ed5353;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  flex: 1;
+}
+
+.imageTitle {
+  font-size: 32px;
+  text-align: center;
+  max-width: 500px;
+}
